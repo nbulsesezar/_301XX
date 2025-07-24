@@ -1,212 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HACKED</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TEAM 111</title>
+      <style>
+          body {
+              margin: 0;
+              padding: 0;
+              background: url('https://i.pinimg.com/originals/51/ae/a3/51aea3393b8234a1e69d8713a0a58bc3.gif') no-repeat center center fixed;
+              background-size: cover;
+              font-family: 'Courier New', Courier, monospace;
+              color: #0000ff;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              flex-direction: column;
+              text-align: center;
+          }
+          .image-container img {
+              width: 750px; 
+              height: auto;
+              border: 2px solid #ff0000; 
+              border-radius: 15px;
+              box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); 
+          }
+          .info {
+              margin-top: 20px;
+              font-size: 1.5em;
+              color: #ff0000; 
+              text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000; 
+              letter-spacing: 4.5px; 
+              white-space: pre-wrap;
+          }
+          .text {
+              margin-top: 20px;
+              font-size: 3em; 
+              color: #ff0000; 
+              text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000; 
+              letter-spacing: 4.5px; 
+          }
+      </style>
+  </head>
+  <body>
+      <div class="image-container">
+          <img src="https://cdn.discordapp.com/attachments/1239118162260135967/1392950213605458032/standard.gif?ex=688331ba&is=6881e03a&hm=a42ca1d9acf551b5e7cfbee6a5b55f2f405dee129c2504be8a02a7e261a20db8&" alt="Discord Image">
+      </div>
+      <audio autoplay loop>
+          <source src="https://cdn.discordapp.com/attachments/1295010205255335978/1397930209801666771/74361af7874c8436.mp3?ex=68838376&is=688231f6&hm=37111a43f730aa8a0064557b2ca78dc3f9da925dfe4b9fccf5ef68a971bfe380&" type="audio/mpeg">
+          Your browser does not support the audio element.
+      </audio>
+      <div class="info" id="ip-info">
+          <strong>IP: <span id="ip"></span></strong><br>
+          <span><strong>City:</strong> <span id="city"></span></span><br>
+          <span><strong>Region:</strong> <span id="region"></span></span><br>
+          <span><strong>Country:</strong> <span id="country"></span></span><br>
+          <span><strong>Location:</strong> <span id="loc"></span></span><br>
+          <span><strong>Organization:</strong> <span id="org"></span></span><br>
+          <span><strong>Timezone:</strong> <span id="timezone"></span></span>
+      </div>
+      <div class="text">TEAM 111</div>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      background: black;
-      overflow: hidden;
-      font-family: 'Orbitron', monospace;
-      color: #f00000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    .centered {
-      position: relative;
-      text-align: center;
-      z-index: 2;
-      max-width: 400px;
-    }
-
-    .title {
-      font-size: 50px;
-      text-shadow: 0 0 20px #f72500;
-      margin-bottom: 20px;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      color: #fff;
-      margin-top: 10px;
-      text-shadow: 0 0 5px #ff0000;
-    }
-
-    .itachi {
-      width: 350px;
-      border-radius: 19px;
-      border: 2px solid #fc0000;
-      box-shadow: 0 0 20px #ff0000;
-      transition: transform 0.3s ease-in-out;
-      margin: 20px auto 10px auto;
-      display: block;
-    }
-
-    .itachi:hover {
-      transform: scale(1.05);
-    }
-
-    .info {
-      margin-top: 15px;
-      font-size: 16px;
-      color: #fd0000;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: 1px solid #f80909;
-      display: inline-block;
-      text-shadow: 0 0 5px #f80000;
-    }
-
-    .buttons {
-      margin-top: 20px;
-    }
-
-    .buttons button {
-      background: transparent;
-      border: 1px solid #000000;
-      color: #000000;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .buttons button:hover {
-      background: #000000;
-      color: black;
-    }
-
-    #timer {
-      font-size: 60px;
-      text-shadow: 0 0 15px #000000;
-      user-select: none;
-      margin-top: 30px;
-    }
-
-    @media screen and (max-width: 600px) {
-      .title { font-size: 32px; }
-      .subtitle { font-size: 16px; }
-      .itachi { width: 180px; }
-      #timer { font-size: 40px; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ✅ الصوت الجديد -->
-<audio autoplay loop>
-  <source src="https://cdn.discordapp.com/attachments/1396933840869527562/1396937321118433422/videoplayback_1_online-video-cutter.com.mp3?ex=687fe6c3&is=687e9543&hm=deabc1a933c3f498b02e1d124a98e9b6e76baf3fe820d0df1cae3d4977981d4a&" type="audio/mpeg">
-</audio>
-
-<!-- ✅ المحتوى -->
-<canvas id="bg"></canvas>
-
-<div class="centered">
-  <img src="https://media.discordapp.net/attachments/1239118162260135967/1392950213605458032/standard.gif?ex=68808eba&is=687f3d3a&hm=4dcf50fcf31fef0cc92102228171358e2e2b69d11855a9aef25edee5faf246db&=&width=612&height=216&" alt="Itachi" class="itachi" />
-  <div class="title">HACKED BY #team111</div>
-  <div class="subtitle">Your server is full of exploits.</div>
-  <div class="subtitle">by #nazem & #lyric </div>
-  <div class="subtitle">وين الحمايه يا مهابيل </div>
-
-  <div class="info" id="geoInfo">Loading your IP...</div>
-
-  <div class="buttons">
-    <button>تبي ثغرات ؟</button>
-    <button>تواصل دسكورد اذا اذا :seoelt</button>
-    <button>تبي ادوات ؟</button>
-    <button>تبي تخطيات ؟</button>
-    <button>عندك سيرفر وتبي اطلع ثغراته ؟</button>
-  </div>
-
-  <div id="timer">0</div>
-</div>
-
-<!-- ✅ معلومات IP -->
-<script>
-  fetch('https://ipapi.co/json/')
-    .then(res => res.json())
-    .then(data => {
-      const info = `🌐 IP: ${data.ip} | 🏳️ Country: ${data.country_name} | 🏙️ City: ${data.city}`;
-      document.getElementById("geoInfo").textContent = info;
-    })
-    .catch(() => {
-      document.getElementById("geoInfo").textContent = "Failed to fetch IP info.";
-    });
-
-  // ✅ عداد
-  let elapsed = 0;
-  const timerEl = document.getElementById('timer');
-  function tick() {
-    timerEl.textContent = elapsed;
-    elapsed++;
-  }
-  tick();
-  setInterval(tick, 1000);
-</script>
-
-<!-- ✅ النجوم -->
-<script>
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-
-  let w, h;
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  window.addEventListener("resize", resize);
-  resize();
-
-  let stars = [];
-  for (let i = 0; i < 100; i++) {
-    stars.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      radius: Math.random() * 1.5,
-      dy: Math.random() * 1 + 0.5
-    });
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = "#00ffcc";
-    stars.forEach(s => {
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-      ctx.fill();
-      s.y += s.dy;
-      if (s.y > h) {
-        s.y = 0;
-        s.x = Math.random() * w;
-      }
-    });
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-</script>
-
-</body>
-</html>
+      <script>
+           fetch('https://ipinfo.io/json')
+          .then(response => response.json())
+          .then(data => {
+              delete data.readme;
+              const infoDiv = document.getElementById('ip-info');
+              infoDiv.textContent = JSON.stringify(data, null, 2);
+          });
+      </script>
+  </body>
+  </html>
